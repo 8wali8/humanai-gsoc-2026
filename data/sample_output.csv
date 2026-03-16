@@ -1,0 +1,5 @@
+participant_id,condition,condition_label,task_id,task_title,decision,timestamp,latency_ms,assistant_name,tone_label,recommendation_text
+p_20260314_ab12cd34,A,Condition A: System-framed assistant,travel-reimbursement-review,Hotel reimbursement request,accept,2026-03-14T18:04:12.342Z,4821,Decision Support Module,Neutral / formal,Approve the reimbursement.
+p_20260314_ef56gh78,A,Condition A: System-framed assistant,travel-reimbursement-review,Hotel reimbursement request,override,2026-03-14T18:07:44.901Z,6915,Decision Support Module,Neutral / formal,Approve the reimbursement.
+p_20260314_ij90kl12,B,Condition B: Humanlike assistant,travel-reimbursement-review,Hotel reimbursement request,accept,2026-03-14T18:11:09.152Z,3618,Maya,Humanlike / conversational,Approve the reimbursement.
+p_20260315_mn34op56,B,Condition B: Humanlike assistant,travel-reimbursement-review,Hotel reimbursement request,accept,2026-03-15T00:19:27.733Z,2954,Maya,Humanlike / conversational,Approve the reimbursement.
