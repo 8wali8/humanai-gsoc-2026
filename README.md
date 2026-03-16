@@ -86,9 +86,7 @@ The experiment has two conditions that differ only in how the assistant is prese
 
 - Condition A uses a more system-like assistant label and a neutral, formal tone
 - Condition B uses a more humanlike assistant name and a warmer, conversational tone
-- the recommendation content itself stays fixed across both conditions
-
-This keeps the cue manipulation isolated to presentation rather than changing the underlying recommendation.
+- the actual reccomendation content itself stays the same
 
 ## Logging Implementation
 
@@ -116,10 +114,10 @@ Open (condition B): [http://localhost:3000/?condition=B](http://localhost:3000/?
 
 The repository includes sample outputs in the same formats a reviewer would care about:
 
-- `data/sample_output.jsonl`: canonical sample of the raw runtime log shape
+- `data/sample_output.jsonl`: sample of the runtime logs
 - `data/sample_output.csv`: CSV export of the same records
 
-`data/logs.jsonl` is kept empty in the repo and filled at runtime, while the sample files are from previous runs stored to be able to reference.
+`data/logs.jsonl` kept empty and is what is updated at runtime
 
 ## Design Decisions
 
@@ -129,7 +127,7 @@ My implementation choices (listed below) are the result of balancing those two c
 
 ### Config-driven cue manipulation
 
-The full project emphasizes manipulation of a variety of cues (assistant naming, tone, confidence framing etc.) while the screening only needed a simple A/B difference, so I kept the current cue change small while still defining conditions declaratively in `lib/conditions.ts` so it would be easy to add on to later.
+The full project emphasizes manipulation of a variety of cues while the screening only needed a simple A/B difference. So, I defined conditions declaratively in `lib/conditions.ts`
 
 Reasoning:
 
@@ -137,7 +135,7 @@ Reasoning:
 
 ### Easily extendable task list
 
-The screening version only includes one recommendation-acceptance task, but the task still lives in `lib/tasks.ts` and is rendered from typed configuration.
+The screening version only includes one task, but the task still lives in my `lib/tasks.ts` and is rendered from a typed config.
 
 Reasoning:
 
@@ -145,9 +143,9 @@ Reasoning:
 
 ### API boundary in front of local storage
 
-The test only stated local logging, so this version uses append-only JSONL instead of a database. Even so, persistence is still hidden behind `/api/log`, validation helpers, and file-storage helpers.
+The test only stated local logging, so this version uses append-only JSONL instead of a database. Even so, I decided to use `/api/log`, validation helpers, and file-storage helpers.
 
 Reasoning:
 
-- makes it easy to swap the storage layer later
+- makes it easy to swap the storage layer later (for an eventual database)
 
